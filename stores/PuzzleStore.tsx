@@ -24,8 +24,9 @@ export default {
         return this.word.split("").filter((letter) => this.allGuesses.includes(letter))
     },
     init() {
-        this.word = words[Math.round(Math.random() * words.length)]
-        this.guesses.replace(new Array(6).fill(''))
+        //Use Math.floor to avoid hitting an index that doesn't exist
+        this.word = words[Math.floor(Math.random() * words.length)]
+        this.guesses = new Array(6).fill('')
         this.currentGuess = 0
     }, 
     Submitguess() {
