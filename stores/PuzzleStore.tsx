@@ -14,8 +14,8 @@ export default {
         return this.guesses.slice(0, this.currentGuess).join("").split("")
     },
     get exactGuesses() {
-        return this.word.split('')
         //if any guesses include this letter in this position/index
+        return this.word.split('')
         .filter((letter, i) => {
             return this.guesses.slice(0, this.currentGuess).map((word) => word[i]).includes(letter)
         })
@@ -30,11 +30,13 @@ export default {
         this.currentGuess = 0
     }, 
     Submitguess() {
-        if (words.includes(this.guesses[this.currentGuess])) {
+        // Added a check to ensure the current guess exists before calling .includes
+        if (this.guesses[this.currentGuess] && words.includes(this.guesses[this.currentGuess])) {
             this.currentGuess += 1
         }
     },
-    handleKeyup(e) {
+    // FIX: Added the KeyboardEvent type to the 'e' parameter
+    handleKeyup(e: KeyboardEvent) {
         if (this.won || this.lost) {
             return
         }
