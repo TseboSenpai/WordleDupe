@@ -28,7 +28,7 @@ export default observer(function Home() {
         />
     ))}
     {store.won && <h1>You Won!</h1>}
-    {store.lost && <h1>You Lost!</h1>}
+    {store.lost && <p style={{ textAlign: 'center' }}>You Lost!<br/>The word was: {store.word}</p>}
     {(store.won || store.lost) && (
       <button onClick={store.init}>Play Again</button>
     )}
