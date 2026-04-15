@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wordle Dupe
 
-## Getting Started
+A small Wordle-like puzzle built with Next.js and TypeScript. Players guess a hidden five-letter word using an on-screen keyboard and a guess grid. The project is intentionally compact and readable — ideal as a learning example for React state management and component composition.
 
-First, run the development server:
+## Features
+
+- Simple Wordle-style gameplay (5-letter words, colored feedback)
+- On-screen keyboard and guess grid components
+- Game state managed in a central store
+- Local word list in `words.json` for easy customization
+
+## Tech Stack
+
+- Next.js (App Router)
+- React + TypeScript
+- CSS modules / global styles
+
+## Quick Start
+
+Install dependencies and run the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure (important files)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `words.json` — local word list used by the game
+- `stores/PuzzleStore.tsx` — game state and logic
+- `components/Guess.tsx` — guess row UI
+- `components/Qwerty.tsx` — on-screen keyboard UI
 
-## Learn More
+## Development Notes
 
-To learn more about Next.js, take a look at the following resources:
+- To change the word list, edit `words.json` and restart the dev server.
+- Game logic lives in the store; adjust validation or feedback there.
+- Styling is in `styles/` and `app/globals.css` — tweak for different themes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contributions are welcome. Open an issue or create a pull request with improvements or bug fixes.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+No license specified. Add one if you plan to publish or share this project publicly.
