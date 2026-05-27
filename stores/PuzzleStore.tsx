@@ -50,7 +50,11 @@ class PuzzleStoreClass {
         // debug
         // eslint-disable-next-line no-console
         console.log('Submitguess:', { guess, includes: guess ? words.includes(guess) : undefined })
-        if (guess && words.includes(guess)) {
+        if (!guess || guess.length < 5) {
+            this.setError('Not enough letters')
+            return
+        }
+        if (words.includes(guess)) {
             this.currentGuess += 1
         } else {
             this.setError('Not in word list')
