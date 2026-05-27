@@ -24,6 +24,11 @@ export default observer(function Home() {
   }, [])
 
   return <div className="flex h-screen w-screen flex-col items-center justify-center bg-[#111827]">
+    {store.error && (
+      <div className="mt-4 rounded bg-red-800/60 px-4 py-2 text-red-100">
+        {store.error}
+      </div>
+    )}
     <h1 className = "text-6xl font-bold uppercase text-transparent bg-clip-text bg-gradient-to-br from-pink-500 to-purple-500">Wordle</h1>
     {store.guesses.map((_, i) => (
         <Guess
@@ -33,6 +38,7 @@ export default observer(function Home() {
           isGuessed={i < store.currentGuess}
         />
     ))}
+  
     {store.won && <h1>You Won!</h1>}
     {store.lost && <p style={{ textAlign: 'center' }}>You Lost!<br/>The word was: {store.word}</p>}
     {(store.won || store.lost) && (

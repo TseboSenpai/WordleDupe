@@ -5,6 +5,7 @@ class PuzzleStoreClass {
     word = ''
     guesses = [] as string[]
     currentGuess = 0
+    error = ''
 
     constructor() {
         makeAutoObservable(this)
@@ -13,6 +14,7 @@ class PuzzleStoreClass {
         this.handleKeyup = this.handleKeyup.bind(this)
         this.init = this.init.bind(this)
         this.Submitguess = this.Submitguess.bind(this)
+        this.setError = this.setError.bind(this)
     }
 
     get won() {
@@ -44,9 +46,24 @@ class PuzzleStoreClass {
     }
 
     Submitguess() {
-        if (this.guesses[this.currentGuess] && words.includes(this.guesses[this.currentGuess])) {
+        const guess = this.guesses[this.currentGuess]
+        // debug
+        // eslint-disable-next-line no-console
+        console.log('Submitguess:', { guess, includes: guess ? words.includes(guess) : undefined })
+        if (guess && words.includes(guess)) {
             this.currentGuess += 1
+        } else {
+            this.setError('Not in word list')
         }
+    }
+
+    setError(msg: string) {
+        // eslint-disable-next-line no-console
+        console.warn('setError:', msg)
+        this.error = msg
+        setTimeout(() => {
+            if (this.error === msg) this.error = ''
+        }, 1500)
     }
 
     pressKey(key: string) {
