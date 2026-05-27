@@ -7,13 +7,19 @@ import PuzzleStore from "../../stores/PuzzleStore";
 import { useEffect } from "react";
 
 export default observer(function Home() {
-  const store = useLocalObservable(() => PuzzleStore)
+  // instantiate the class-backed store so methods are available
+  const store = useLocalObservable(() => PuzzleStore())
   useEffect(() => {
     store.init()
-    window.addEventListener('keyup', store.handleKeyup)
+    const handler = (e: KeyboardEvent) => store.handleKeyup(e)
+    window.addEventListener('keyup', handler)
+
+    // debug: log available store keys
+    // eslint-disable-next-line no-console
+    console.log('store keys:', Object.keys(store))
 
     return () => {
-      window.removeEventListener('keyup', store.handleKeyup)
+      window.removeEventListener('keyup', handler)
     }
   }, [])
 
