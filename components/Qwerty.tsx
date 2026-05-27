@@ -19,14 +19,14 @@ export default observer(function Querty({ store }: QuertyProps) {
   return (
     <div>
       {qwerty.map((row, i) => (
-        <div key={i} className="flex justify-center">
+        <div key={i} className="flex justify-center mb-1">
           {i === 2 && (
             <div
               onClick={() => {
                 if (typeof (store as any).pressKey === 'function') (store as any).pressKey('Enter')
                 else console.warn('pressKey not available on store')
               }}
-              className="rounded-m m-px flex h-10 w-16 items-center justify-center uppercase text-black bg-gray-200 cursor-pointer"
+              className="rounded-m m-px flex h-8 w-12 md:h-10 md:w-16 items-center justify-center uppercase text-black bg-gray-200 cursor-pointer"
             >
               enter
             </div>
@@ -42,27 +42,27 @@ export default observer(function Querty({ store }: QuertyProps) {
             return (
               <div
                 key={char}
-                onClick={() => {
-                  if (typeof (store as any).pressKey === 'function') (store as any).pressKey(char)
-                  else console.warn('pressKey not available on store')
-                }}
-                className={`rounded-m m-px flex h-10 w-10 cursor-pointer items-center justify-center uppercase text-black ${bgColor}`}
+                  onClick={() => {
+                    if (typeof (store as any).pressKey === 'function') (store as any).pressKey(char)
+                    else console.warn('pressKey not available on store')
+                  }}
+                  className={`rounded-m m-px flex h-8 w-8 md:h-10 md:w-10 cursor-pointer items-center justify-center uppercase text-black ${bgColor}`}
               >
                 {char}
               </div>
             )
           })}
-          {i === 2 && (
-            <div
-              onClick={() => {
-                if (typeof (store as any).pressKey === 'function') (store as any).pressKey('Backspace')
-                else console.warn('pressKey not available on store')
-              }}
-              className="rounded-m m-px flex h-10 w-16 items-center justify-center uppercase text-black bg-gray-200 cursor-pointer"
-            >
-              ⌫
-            </div>
-          )}
+            {i === 2 && (
+              <div
+                onClick={() => {
+                  if (typeof (store as any).pressKey === 'function') (store as any).pressKey('Backspace')
+                  else console.warn('pressKey not available on store')
+                }}
+                className="rounded-m m-px flex h-8 w-12 md:h-10 md:w-16 items-center justify-center uppercase text-black bg-gray-200 cursor-pointer"
+              >
+                ⌫
+              </div>
+            )}
         </div>
       ))}
     </div>

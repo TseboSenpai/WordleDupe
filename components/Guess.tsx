@@ -6,7 +6,7 @@ interface Props {
 
 export default function Guess({ isGuessed, guess, word }: Props) {
     return (
-        <div className="grid grid-cols-5 gap-2 md-2">
+        <div className="grid grid-cols-5 gap-2 md:gap-2">
             {new Array(5).fill(0).map((_, i) => {
                 const bgColor = !isGuessed
                     ? 'bg-black'
@@ -17,7 +17,7 @@ export default function Guess({ isGuessed, guess, word }: Props) {
                     : 'bg-black';
             
                 return (
-                    <div key={i} className={`h-16 w-16 border border-gray-400 font-bold text-white uppercase flex items-center justify-center ${bgColor}`}>
+                    <div key={i} className={`h-10 w-10 md:h-16 md:w-16 border border-gray-400 font-bold text-white uppercase flex items-center justify-center ${bgColor}`}>
                         {guess[i]}
                     </div>
                 );
